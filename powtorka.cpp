@@ -94,27 +94,30 @@ int wyszukiwanieBinarne(int liczbyTab[], int szukana, int n){
     return poczatek;
 };
 
-void sortowaniePrzezWybór(int daneTablica[], int dlugoscTab){
+void sortowaniePrzezWybor(int daneTablica[], int dlugoscTab){
     for(int i = 0; i<dlugoscTab-1; i++){
-        int najmIndeks = 0;
+        int najmIndeks = i;
         for(int j = i+1; j<dlugoscTab; j++){
             if(daneTablica[j] < daneTablica[najmIndeks]){
                 najmIndeks = j;
             }
         }
         if(najmIndeks != i){
-            int temp = daneTablica[i];
-            daneTablica[i] = daneTablica[najmIndeks];
-            daneTablica[najmIndeks] = temp;
+            int temp = daneTablica[najmIndeks];
+            daneTablica[najmIndeks] = daneTablica[i];
+            daneTablica[i] = temp;
         }
     }
-}
+    for(int i = 0; i<dlugoscTab; i++){
+        cout<<daneTablica[i]<<endl;
+    }
+};
 
 int main() {
     int n = 0;
     int* tablicaLiczb;
     int* tab;
-    int tabulator[] = {3,8,9,10,1,6,20,23};
+    int tabulator[] = {3,8,9,1,6,20,23};
     
     cout<<"Wprowadź ilość liczb w tablicy: ";
     cin>>n;
@@ -129,9 +132,11 @@ int main() {
     
     cout<<"\n Dominanta tych liczb: "<<dominanta(tablicaLiczb, n)<<endl;
     
-    sortowaniePrzezWstawianie(tab, n);
+    //sortowaniePrzezWstawianie(tab, n);
     
-    cout<<"\n Wyszukana liczba binarnie została znaleziona na indeksie: "<<wyszukiwanieBinarne(tabulator, 12, 7);
+    cout<<"\n Wyszukana liczba binarnie została znaleziona na indeksie: "<<wyszukiwanieBinarne(tabulator, 12, 7)<<endl;
+    
+    sortowaniePrzezWybor(tabulator, 7);
     
     
 
