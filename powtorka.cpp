@@ -92,6 +92,22 @@ int wyszukiwanieBinarne(int liczbyTab[], int szukana, int n){
         }
     }
     return poczatek;
+};
+
+void sortowaniePrzezWybór(int daneTablica[], int dlugoscTab){
+    for(int i = 0; i<dlugoscTab-1; i++){
+        int najmIndeks = 0;
+        for(int j = i+1; j<dlugoscTab; j++){
+            if(daneTablica[j] < daneTablica[najmIndeks]){
+                najmIndeks = j;
+            }
+        }
+        if(najmIndeks != i){
+            int temp = daneTablica[i];
+            daneTablica[i] = daneTablica[najmIndeks];
+            daneTablica[najmIndeks] = temp;
+        }
+    }
 }
 
 int main() {
