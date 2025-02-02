@@ -80,9 +80,9 @@ int wyszukiwanieBinarne(int liczbyTab[], int szukana, int n){
     int koniec = n-1;
     
     while(poczatek <= koniec){
-        int srodek = (poczatek+koniec)/2;
+        int srodek = poczatek + (koniec - poczatek)/2;
         if(liczbyTab[srodek] == szukana){
-            return srodek+1;
+            return srodek;
         }
         if(liczbyTab[srodek] < szukana){
             poczatek = srodek+1;
@@ -91,7 +91,7 @@ int wyszukiwanieBinarne(int liczbyTab[], int szukana, int n){
             koniec = srodek-1;
         }
     }
-    return poczatek;
+    return -1;
 };
 
 void sortowaniePrzezWybor(int daneTablica[], int dlugoscTab){
@@ -125,7 +125,7 @@ int main() {
     tablicaLiczb = new int[n];
     tab = new int[n];
     losowanieLiczb(tablicaLiczb, n);
-    losowanieLiczb(tab, n);
+    //losowanieLiczb(tab, n);
     
     cout<<"\n";
     cout<<"Mediana tego zbioru liczb losowych: "<<mediana(tablicaLiczb, n)<<"\n";
@@ -134,9 +134,9 @@ int main() {
     
     //sortowaniePrzezWstawianie(tab, n);
     
-    cout<<"\n Wyszukana liczba binarnie została znaleziona na indeksie: "<<wyszukiwanieBinarne(tabulator, 12, 7)<<endl;
+    cout<<"\n Wyszukana liczba binarnie została znaleziona na indeksie: "<<wyszukiwanieBinarne(tabulator, 20, sizeof(tabulator)/sizeof(tabulator[0]))<<endl;
     
-    sortowaniePrzezWybor(tabulator, 7);
+    //sortowaniePrzezWybor(tabulator, 7);
     
     
 
